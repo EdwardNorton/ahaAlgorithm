@@ -17,6 +17,67 @@
 这是非常划算的。新增加一个数也很简单，把需要增加的数放到队尾即q[tail]之后再tail++就欧克啦。
   在队首删除一个数的操作是head++;
   在队尾增加一个数（假设这个数是x）的操作是q[tail]=x;tail++;  
-  ### 
+  ###  
+  #include <stdio.h>
+  int main()
+  {
+  int q[102]={0,6,3,1,7,5,8,9,2,4},head,tail;
+  int i;
+  //初始化队列
+  head=1;
+  tail=10; //队列中已经有9个元素了，tail指向队尾的后一个位置
+  while(head<tail) //当队列不为空的时候执行循环
+  {
+  //打印队首并将队首出队
+  printf("%d ",q[head]);
+  head++;
+  //先将新队首的数添加到队尾
+  q[tail]=q[head];
+  tail++;
+  //再将队首出队
+  head++;
+  }
+getchar();getchar();
+return 0;
+}
+下面这段代码就是使用结构体来实现的队列操作。
+### 
+
+  #include <stdio.h>
+  struct queue
+  {
+  int data[100];//队列的主体，用来存储内容
+  int head;//队首
+  int tail;//队尾
+  };
+  int main()
+  {
+  struct queue q;
+  int i;
+  //初始化队列
+  q.head=1;
+  q.tail=1;
+  for(i=1;i<=9;i++)
+  {
+  //依次向队列插入9个数
+  scanf("%d",&q.data[q.tail]);
+  q.tail++;
+  }
+  while(q.head<q.tail) //当队列不为空的时候执行循环
+  {
+  //打印队首并将队首出队
+  printf("%d ",q.data[q.head]);
+  q.head++;
+  //先将新队首的数添加到队尾
+  q.data[q.tail]=q.data[q.head];
+  q.tail++;
+  //再将队首出队
+  q.head++;
+  }
+  getchar();getchar();
+  return 0;
+  }
+
+  
 
  
